@@ -16,9 +16,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'valor')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'marca_id')->textInput() ?>
-
-    <?= $form->field($model, 'modelo_id')->textInput() ?>
+    <?= $form->field($model, 'marca_id')->dropDownList(yii\helpers\ArrayHelper::map(app\models\Marca::find()->all(), 'id', 'descricao')) ?>
+      
+    <?= $form->field($model, 'modelo_id')->dropDownList(yii\helpers\ArrayHelper::map(app\models\Modelo::find()->all(), 'id', 'descricao')) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
