@@ -63,6 +63,7 @@ class ProdutoController extends Controller
         $model = new Produto();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->atualizarEstoque($model->quantidade);
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -80,8 +81,9 @@ class ProdutoController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $model->quantidade = $model->getEstoque()->one()->quantidade;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->atualizarEstoque($model->quantidade);
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

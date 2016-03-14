@@ -15,7 +15,7 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `cezao`.`produto` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `descricao` VARCHAR(45) NOT NULL ,
-  `valor` DECIMAL(10,0) NOT NULL ,
+  `valor` DECIMAL(10,2) NOT NULL ,
   `marca_id` INT NOT NULL ,
   `modelo_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,

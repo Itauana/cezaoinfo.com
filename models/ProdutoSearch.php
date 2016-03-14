@@ -18,9 +18,9 @@ class ProdutoSearch extends Produto
     public function rules()
     {
         return [
-            [['id', 'marca_id', 'modelo_id'], 'integer'],
+            //[['id', 'marca_id', 'modelo_id'], 'integer'],
             [['descricao'], 'safe'],
-            [['valor'], 'number'],
+          //  [['valor'], 'number'],
         ];
     }
 

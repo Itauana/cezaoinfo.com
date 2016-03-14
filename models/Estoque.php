@@ -40,7 +40,7 @@ class Estoque extends \yii\db\ActiveRecord
     {
         return [
             'produto_id' => 'Produto ID',
-            'quantidade' => 'Quantidade',
+            'quantidade' => 'Quantidade Estoque',
         ];
     }
 

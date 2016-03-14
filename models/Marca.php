@@ -40,7 +40,7 @@ class Marca extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'descricao' => 'Descricao',
+            'descricao' => 'Marca',
         ];
     }
 

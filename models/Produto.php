@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\Estoque;
 
 /**
  * This is the model class for table "produto".
@@ -19,6 +20,9 @@ use Yii;
  */
 class Produto extends \yii\db\ActiveRecord
 {
+    
+    public $quantidade;
+    
     /**
      * @inheritdoc
      */
@@ -33,8 +37,8 @@ class Produto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['descricao', 'valor', 'marca_id', 'modelo_id'], 'required'],
-            [['valor'], 'number'],
+            [['descricao', 'valor', 'marca_id', 'modelo_id','quantidade'], 'required'],
+            [['valor','quantidade'], 'number'],
             [['marca_id', 'modelo_id'], 'integer'],
             [['descricao'], 'string', 'max' => 45]
         ];
@@ -49,8 +53,9 @@ class Produto extends \yii\db\ActiveRecord
             'id' => 'ID',
             'descricao' => 'Descricao',
             'valor' => 'Valor',
-            'marca_id' => 'Marca ID',
-            'modelo_id' => 'Modelo ID',
+            'quantidade' => 'Quantidade (Estoque)',
+            'marca_id' => 'Marca',
+            'modelo_id' => 'Modelo',
         ];
     }
 
@@ -77,4 +82,13 @@ class Produto extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Modelo::className(), ['id' => 'modelo_id']);
     }
+    
+    public function atualizarEstoque($quantidade){
+        $any = $this->getEstoque()->one();
+        $model = $any == null ? new Estoque() : $any;
+        $model->produto_id = $this->id;
+        $model->quantidade = $quantidade;
+        $model->save();        
+    }
+    
 }

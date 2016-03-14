@@ -40,7 +40,7 @@ class Modelo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'descricao' => 'Descricao',
+            'descricao' => 'Modelo',
         ];
     }
 
